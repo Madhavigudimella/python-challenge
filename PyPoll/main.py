@@ -48,6 +48,11 @@ for i in range(len(unique_list)):
     #counts number of occurances of each unique candidate
     vote_summary.append(candidate.count(unique_list[i]))
     print(unique_list[i]+": "+"{:.3%}".format(vote_summary[i]/total_vote)+" ("+str(vote_summary[i])+")")
+index = vote_summary.index(max(vote_summary))
+print("___________________________________________")
+#Winner
+print("Winner :"+unique_list[index])
+print("___________________________________________")
 
 #Write to csv file
 with open(ncsv_path, 'w') as csvfile2:
@@ -62,3 +67,7 @@ with open(ncsv_path, 'w') as csvfile2:
     for j in range(len(unique_list)):
         csvfile2.write(unique_list[j]+":"+"{:.3%}".format(vote_summary[j]/total_vote)+"("+str(vote_summary[j])+")\n")
 
+    csvfile2.write("___________________________________________\n")  
+    #winner
+    csvfile2.write("Winner :"+unique_list[index]+"\n")
+    csvfile2.write("___________________________________________\n")
